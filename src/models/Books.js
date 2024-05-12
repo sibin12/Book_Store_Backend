@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import PurchaseHistory from '../models/PurchaseHistory.js'
 
 const bookSchema = new mongoose.Schema({
     bookId: {
@@ -29,6 +30,22 @@ const bookSchema = new mongoose.Schema({
     }
 });
 
+
+
+bookSchema.pre('save', async function(next) {
+    try {
+        // Fetch purchase history for this book
+        const purchaseHistory = await PurchaseHistory.find({ bookId: this._id });
+        
+        // Compute total sell count based on purchase history
+        this.sellCount = purchaseHistory.reduce((total, purchase) => total + purchase.quantity, 0);
+        
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
 const Book = mongoose.model('Book', bookSchema);
 
-module.exports = Book;
+export default Book;

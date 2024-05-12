@@ -7,6 +7,7 @@ const purchaseSchema = new mongoose.Schema({
         unique: true
     },
     bookId: {
+        // type:String,
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book',
         required: true
@@ -30,6 +31,6 @@ const purchaseSchema = new mongoose.Schema({
     }
 });
 
-const Purchase = mongoose.model('Purchase', purchaseSchema);
+const PurchaseHistory = mongoose.model('PurchaseHistory', purchaseSchema);
 
-module.exports = Purchase;
+export default PurchaseHistory;

@@ -1,5 +1,6 @@
 import PurchaseHistory from '../models/PurchaseHistory.js';
 import Book from '../models/Books.js';
+import { sendPurchaseNotificationToAuthors } from '../utils/purchaseNotification.js';
 
 // Purchase a book
 export const purchase = async (req, res) => {
@@ -44,6 +45,9 @@ export const purchase = async (req, res) => {
 
         // Increment sellCount of the book
         book.sellCount += quantity;
+
+        const purchase = {book,quantity}
+        sendPurchaseNotificationToAuthors(purchase)
 
         // Save the purchase record and update the book sellCount
         await Promise.all([newPurchase.save(), book.save()]);

@@ -1,9 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import adminRoutes from './src/routes/adminRoutes.js';
-import userRoutes from './src/routes/userRoutes.js';
+import purchaseRoutes from './src/routes/purchaseRoutes.js';
 import authRoutes from './src/routes/authRoutes.js';
 import bookRoutes from './src/routes/bookRoutes.js';
+import sendRevenueEmailToAuthors from './src/utils/revenueTracker.js'
 
 import { connect } from './src/config/database.js';
 const app = express();
@@ -11,6 +12,7 @@ dotenv.config();
 
 
 connect();
+sendRevenueEmailToAuthors()
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
@@ -19,7 +21,7 @@ app.use(express.urlencoded({extended: true}))
 app.use('/api/auth',authRoutes);
 app.use('/api/author',bookRoutes);
 app.use('/api/admin',adminRoutes);
-app.use('/api/user',userRoutes);
+app.use('/api/user',purchaseRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

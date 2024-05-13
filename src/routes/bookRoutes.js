@@ -4,7 +4,11 @@ import { authenticateUser, isAuthor } from '../middlewares/auth.js';
 
 const router = express.Router();
 
-// POST route for adding a book
-router.post('/books',authenticateUser, isAuthor, addBook);
+// route for adding a book
+router.post('/books', authenticateUser, isAuthor, addBook);
+
+// route for searching
+
+
 
 export default router;

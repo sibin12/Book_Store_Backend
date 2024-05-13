@@ -12,14 +12,14 @@ dotenv.config();
 
 
 connect();
-sendRevenueEmailToAuthors()
+// sendRevenueEmailToAuthors()
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
 
 app.use('/api/auth',authRoutes);
-app.use('/api/author',bookRoutes);
+app.use('/api/book',bookRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/user',purchaseRoutes);
 

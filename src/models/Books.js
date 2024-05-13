@@ -1,6 +1,22 @@
 import mongoose from "mongoose";
 import PurchaseHistory from '../models/PurchaseHistory.js'
 
+const reviewSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true,
+        min: 1, max: 5
+    },
+    comment: {
+        type: String
+    }
+}, { timestamps: true });
+
 const bookSchema = new mongoose.Schema({
     bookId: {
         type: String,
@@ -27,24 +43,11 @@ const bookSchema = new mongoose.Schema({
     sellCount: {
         type: Number,
         default: 0
-    }
+    },
+    reviews: [reviewSchema] 
+
 });
 
-
-
-bookSchema.pre('save', async function(next) {
-    try {
-        // Fetch purchase history for this book
-        const purchaseHistory = await PurchaseHistory.find({ bookId: this._id });
-        
-        // Compute total sell count based on purchase history
-        this.sellCount = purchaseHistory.reduce((total, purchase) => total + purchase.quantity, 0);
-        
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
 
 const Book = mongoose.model('Book', bookSchema);
 

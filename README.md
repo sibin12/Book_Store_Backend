@@ -24,7 +24,7 @@ Revenue notifications are sent to authors on a monthly basis using the node-cron
 
 ### Users
 
-The users collection in the database stores information about the users of the application. Each user has a unique identifier (userId), email, role, and other relevant information.
+The users collection in the database stores information about the users of the application. Each user has a unique identifier (_Id), username, email, and role.
 
 ### Books
 
@@ -33,10 +33,6 @@ The books collection stores information about the books available in the store. 
 ### Purchase History
 
 The purchaseHistory collection maintains records of book purchases made by users. Each purchase record includes a unique purchaseId, bookId, userId, purchaseDate, price, and quantity.
-
-### Revenue Tracking
-
-The revenue tracking mechanism calculates the revenue generated from book sales. It queries the purchaseHistory collection to calculate the total revenue for a specific period, such as the current month or year.
 
 ## Usage
 
@@ -48,11 +44,11 @@ Before running the application, you need to set up your environment variables. T
 
 Inside the .env file, add the following variables:
 
-MONGO_URL
-PORT
-JWT_SECRET
-USER_EMAIL
-PASSWORD 
+* MONGO_URL
+* PORT
+* JWT_SECRET
+* USER_EMAIL
+* PASSWORD 
 
 3. Install dependencies: `npm install`
 

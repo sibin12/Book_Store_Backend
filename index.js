@@ -9,8 +9,10 @@ import { connect } from './src/config/database.js';
 const app = express();
 dotenv.config();
 
-
+// database connecting
 connect();
+
+// sending monthly revenue to authors
 sendRevenueEmailToAuthors()
 
 app.use(express.json());

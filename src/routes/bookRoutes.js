@@ -13,7 +13,7 @@ router.get('/search', search)
 // route for adding review
 router.post('/add-review/:bookId', authenticateUser, isRetailUser, addReview)
 
-//route for viewing review
+// route for viewing review
 router.get('/view-review/:bookId', viewReview)
 
 

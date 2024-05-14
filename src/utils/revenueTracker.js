@@ -57,7 +57,7 @@ async function sendEmailToAuthors(authors, emailContent) {
     // Compose email message
     const mailOptions = {
         from: process.env.USER_EMAIL,
-        // to: authors.join(','), // Send email to all authors
+        to: authors.join(','), 
         subject: 'Monthly Revenue Report',
         html: emailContent
     };
@@ -75,3 +75,4 @@ cron.schedule('0 0 1 * *', () => {
     scheduled: true,
     timezone: 'Asia/Kolkata'
 });
+ 

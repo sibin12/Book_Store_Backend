@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import PurchaseHistory from '../models/PurchaseHistory.js'
 
 const reviewSchema = new mongoose.Schema({
     userId: {

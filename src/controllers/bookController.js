@@ -1,10 +1,8 @@
 import Book from '../models/Books.js';
-import User from '../models/Users.js';
 
 // function for adding a book
 export const addBook = async (req, res) => {
     try {
-        // Extract book data from request body
         const { title, authors, description, price } = req.body;
 
         // Check if price is within the range of 100 to 1000
@@ -44,7 +42,6 @@ export const addBook = async (req, res) => {
 // function for serching and filtering
 export const search = async (req, res) => {
     try {
-        // Parse query parameters from the request
         const { title, author, minPrice, maxPrice } = req.query;
 
         // Construct MongoDB query dynamically based on query parameters
@@ -59,7 +56,6 @@ export const search = async (req, res) => {
             query.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
         }
 
-        // Execute query against the books collection
         const filteredBooks = await Book.find(query);
 
         res.json(filteredBooks);
@@ -82,13 +78,13 @@ export const addReview = async (req, res) => {
         if (!book) {
             return res.status(404).json({ message: 'Book not found' });
         }
-        
+
         // Check if the user has already reviewed the book
         const existingReview = book.reviews.find(review => review.userId.toString() === userId);
         if (existingReview) {
             return res.status(400).json({ message: 'You have already reviewed this book' });
         }
-        
+
         const review = { userId, rating, comment };
         book.reviews.push(review);
         await book.save();

@@ -7,7 +7,6 @@ const purchaseSchema = new mongoose.Schema({
         unique: true
     },
     bookId: {
-        // type:String,
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book',
         required: true

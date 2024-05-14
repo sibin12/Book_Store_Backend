@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import adminRoutes from './src/routes/adminRoutes.js';
 import purchaseRoutes from './src/routes/purchaseRoutes.js';
 import authRoutes from './src/routes/authRoutes.js';
 import bookRoutes from './src/routes/bookRoutes.js';
@@ -12,16 +11,15 @@ dotenv.config();
 
 
 connect();
-// sendRevenueEmailToAuthors()
+sendRevenueEmailToAuthors()
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 
-app.use('/api/auth',authRoutes);
-app.use('/api/book',bookRoutes);
-app.use('/api/admin',adminRoutes);
-app.use('/api/user',purchaseRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/book', bookRoutes);
+app.use('/api/user', purchaseRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

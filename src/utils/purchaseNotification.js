@@ -14,7 +14,7 @@ export async function sendPurchaseNotificationToAuthors(purchase) {
 
         const emailContent = `Dear Author,\n\nA new purchase has been made for your book "${purchase.book.title}".\n\nDetails:\n- Quantity: ${purchase.quantity}\n- Total Amount: ${purchase.book.price}\n\nThank you for your contribution.\n\nRegards,\nThe Book Store Team`;
 
-        // Create a Nodemailer transporter with SMTP configuration
+        // Nodemailer transporter with SMTP configuration
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,

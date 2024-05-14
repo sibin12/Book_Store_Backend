@@ -64,21 +64,9 @@ The purchaseHistory collection maintains records of book purchases made by users
 
 1. Clone the repository: `git clone https://github.com/sibin12/Book_Store_Backend.git`
   
-2. Setting up Environment Variables
+2. Install dependencies: `npm install`
 
-Before running the application, you need to set up your environment variables. This can be done by creating a .env file at the root of the project directory. 
-
-Inside the .env file, add the following variables:
-
-* MONGO_URL
-* PORT
-* JWT_SECRET
-* USER_EMAIL
-* PASSWORD 
-
-3. Install dependencies: `npm install`
-
-4. Run the application: `npm start`
+3. Run the application: `npm start`
 
 ## Get in Touch
 

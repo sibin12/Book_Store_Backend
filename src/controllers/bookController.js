@@ -1,4 +1,6 @@
 import Book from '../models/Books.js';
+import User from '../models/Users.js';
+import agenda from '../utils/agenda.js'
 
 // function for adding a book
 export const addBook = async (req, res) => {
@@ -22,6 +24,18 @@ export const addBook = async (req, res) => {
         });
 
         await newBook.save();
+
+        // sending email to all user's about the new book.
+        const users = await User.find();
+        for (const user of users) {
+            const emailData = {
+                to: user.email,
+                subject: 'New Book Release',
+                text: `Dear ${user.username},\n\nA new book titled "${title}" by ${authors} has been released. Check it out now!`
+            };
+
+            await agenda.schedule('in a minute', 'send email', emailData);
+        }
 
         res.status(201).json({ message: 'Book added successfully' });
     } catch (error) {

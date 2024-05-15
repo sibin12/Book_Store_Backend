@@ -72,7 +72,9 @@ The purchaseHistory collection maintains records of book purchases made by users
 
 3. Run the application: `npm start`
 
-4.Postman Workspace link: `https://www.postman.com/galactic-station-687459/workspace/book-store-application`
+## Postman Collection
+
+You can find the Postman collection for testing the API endpoints [https://www.postman.com/galactic-station-687459/workspace/book-store-application].
 
 ## Get in Touch
 

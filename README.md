@@ -20,6 +20,10 @@ When a user purchases a book, an email notification is sent to the author about 
 
 Revenue notifications are sent to authors on a monthly basis using the node-cron module to schedule email sending at regular intervals. Each month, the system calculates the revenue generated from book sales for each author and sends an email containing revenue details, including the total revenue for the current month and year.
 
+### Bulk Email Notifications for New Book Releases
+
+The application uses Agenda, a job scheduling library for Node.js backed by MongoDB, to handle the bulk email notifications. When a new book is released, email notifications are sent to all retail users.
+
 ## Database Design and Implementation
 
 ### Users

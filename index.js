@@ -13,7 +13,7 @@ dotenv.config();
 connect();
 
 // sending monthly revenue to authors
-sendRevenueEmailToAuthors()
+// sendRevenueEmailToAuthors()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

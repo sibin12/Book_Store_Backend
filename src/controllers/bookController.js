@@ -37,7 +37,7 @@ export const addBook = async (req, res) => {
             await agenda.schedule('in a minute', 'send email', emailData);
         }
 
-        res.status(201).json({ message: 'Book added successfully' });
+        res.status(201).json({newBook, message: 'Book added successfully' });
     } catch (error) {
         if (error.code === 11000 && error.keyPattern && error.keyPattern.title) {
             return res.status(400).json({ message: 'Title must be unique' });
